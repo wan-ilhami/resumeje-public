@@ -2,10 +2,12 @@
 
 High-level, public-safe view of how ResumeJe is built. No internal URLs, credentials, or infrastructure identifiers — just the shape of the system.
 
-## Two services, one product
+## Two services, one private repo
 
-- **`frontend`** (private) — Next.js 16 App Router. Owns the UI, all server route handlers, the Prisma/PostgreSQL data layer, and authentication (Google or email sign-in). Every account's resumes, application-tracker entries, and saved data live here.
-- **`backend`** (private) — Express 5 on Bun. A dedicated service for the heavier, stateless work: parsing uploaded resumes (PDF/DOCX/TXT, with OCR for scanned/image-only PDFs), AI-driven rewriting and cover-letter generation, and ATS keyword scoring.
+`frontend` and `backend` are plain folders inside a single private parent repository (`resumeje`) — not separate repos, no pinned/synced versions between them.
+
+- **`frontend`** — Next.js 16 App Router. Owns the UI, all server route handlers, the Prisma/PostgreSQL data layer, and authentication (Google or email sign-in). Every account's resumes, application-tracker entries, and saved data live here.
+- **`backend`** — Express 5 on Bun. A dedicated service for the heavier, stateless work: parsing uploaded resumes (PDF/DOCX/TXT, with OCR for scanned/image-only PDFs), AI-driven rewriting and cover-letter generation, and ATS keyword scoring.
 
 The browser never talks to the backend directly. Every request flows:
 
@@ -25,4 +27,4 @@ Every resume is stored against a user account (Google or email sign-in) — ther
 
 ## What this repo publishes
 
-This public repository carries the product description, the `ResumeFormData` contract, this architecture overview, and a live version tracker kept in sync by CI on every release of the private frontend/backend repos. It does not carry application source, API routes, database schema, AI prompt templates, or anything that would let someone stand up a copy of the private services.
+This public repository carries the product description, the `ResumeFormData` contract, and this architecture overview. It does not carry application source, API routes, database schema, AI prompt templates, or anything that would let someone stand up a copy of the private services.

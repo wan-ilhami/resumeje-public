@@ -27,31 +27,17 @@ Building, analyzing, and generating require a free account, because every resume
 
 ## This Repository
 
-This is the **public** repository for ResumeJe. It is the public showcase, the data-contract reference, and the release tracker. The `frontend` and `backend` source code lives in separate private repositories.
+This is the **public** repository for ResumeJe — a product overview, architecture summary, and the shared data contract. The `frontend` and `backend` source code lives in a single private parent repository (`resumeje`), as plain folders, not separate repos.
 
 **What's here**
-- Public product description and feature overview
-- The canonical `ResumeFormData` shape — the contract every surface shares
-- A high-level architecture summary
-- Live version tracking for frontend and backend (auto-updated on every release)
-- Local development orchestration scripts (`package.json`) used by maintainers to run both private packages together
+- ❌ No API keys, tokens, credentials, internal URLs, or user data.
+- ✅ Only the product overview, the canonical `ResumeFormData` contract, and the architecture summary.
 
 **Not here**
 - Frontend or backend source code
 - Endpoint documentation, server configuration, or infrastructure detail
 - Environment variables, secrets, or connection strings
 - Database schema or AI prompt templates
-
----
-
-## Current Versions
-
-| Package | Version |
-|---|---|
-| Frontend | <!-- FRONTEND_VERSION -->1.5.0<!-- /FRONTEND_VERSION --> |
-| Backend | <!-- BACKEND_VERSION -->1.5.0<!-- /BACKEND_VERSION --> |
-
-Versions update automatically: each push to `master` in the frontend or backend runs semantic-release, which dispatches a `version-updated` event here. GitHub Actions then refreshes this table and cuts a release on this repo.
 
 ---
 
@@ -86,9 +72,13 @@ Saved resumes live in the account's database record; the resume currently being 
 
 ---
 
+## Try it
+
+[resumeje.com](https://resumeje.com) — free account required to build, analyze, or generate.
+
 ## Architecture
 
-Two private services — a Next.js frontend (UI, accounts, data) and an Express/Bun backend (parsing, OCR, AI, ATS scoring) — with the browser only ever talking to the frontend. See [`ARCHITECTURE.md`](./ARCHITECTURE.md) for the full breakdown.
+Two private services in one repo — a Next.js frontend (UI, accounts, data) and an Express/Bun backend (parsing, OCR, AI, ATS scoring) — with the browser only ever talking to the frontend. See [`ARCHITECTURE.md`](./ARCHITECTURE.md) for the full breakdown.
 
 ---
 
