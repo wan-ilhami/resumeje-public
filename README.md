@@ -88,22 +88,7 @@ Saved resumes live in the account's database record; the resume currently being 
 
 ## Architecture
 
-```
-centralized-resume (this repo — public)
-    Public showcase + data contract + release tracker + dev orchestration
-
-frontend (private — Next.js 16, React 19)
-    Product UI, server-side routes, account data, admin tooling
-
-backend (private — Express 5 on Bun)
-    File parsing and OCR, AI inference, ATS scoring
-```
-
-The browser never calls the parsing/AI service directly. Every request goes:
-
-```
-Browser → frontend server routes → backend service
-```
+Two private services — a Next.js frontend (UI, accounts, data) and an Express/Bun backend (parsing, OCR, AI, ATS scoring) — with the browser only ever talking to the frontend. See [`ARCHITECTURE.md`](./ARCHITECTURE.md) for the full breakdown.
 
 ---
 
