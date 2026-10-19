@@ -1,5 +1,0 @@
-echo "🔍 Running pre-commit checks: lint + type-check (frontend + backend)..."
-
-# `verify` = frontend lint + backend lint + frontend type-check + backend type-check
-# (see package.json). Run from this repo root; bun resolves --cwd paths itself.
-bun run verify
