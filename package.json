@@ -22,9 +22,9 @@
     "prod": "bun run --cwd ../backend start & bun run --cwd ../frontend start"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.2.2",
-    "@commitlint/config-conventional": "^21.2.2",
-    "concurrently": "^9.2.1",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "concurrently": "^9.2.5",
     "cross-env": "^10.1.0",
     "husky": "^9.1.7",
     "kill-port": "^2.0.1",
