@@ -19,7 +19,7 @@ The frontend is the trust boundary: it authenticates the user, then forwards onl
 
 ## The shared contract
 
-Every surface — the builder, the ATS checker, the cover letter generator, exports, templates — reads and writes one canonical shape, `ResumeFormData` (defined in this repo's [README](./README.md)). A saved resume is a database record tied to the account; the resume being actively edited is held in application state and mirrored to browser local storage, so a page reload doesn't lose in-progress work. Because every feature reads the same shape, an edit made in the builder is immediately visible to the ATS checker, the cover letter generator, and every export path — there's no separate "sync" step.
+Every surface — the builder, the ATS checker, the cover letter generator, exports, templates — reads and writes one canonical shape, `ResumeFormData` (defined in this repo's [README](./README.md)). A saved resume is a database record tied to the account; the resume being actively edited is held in application state, with a recovery copy in browser local storage, so a page reload doesn't lose in-progress work. Because every feature reads the same shape, an edit made in the builder is immediately visible to the ATS checker, the cover letter generator, and every export path — there's no separate "sync" step.
 
 ## Accounts and privacy
 

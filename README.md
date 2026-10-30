@@ -47,14 +47,15 @@ Every ResumeJe surface — builder, ATS checker, cover letter generator, exports
 
 ```ts
 interface ResumeFormData {
-  profileImage?: string | null;
+  industry?: string;                        // picks the AI writing rules; detected on upload
+  profileImage: string | null;
   fullName: string;
   jobTitle: string;
   email: string;
   phone: string;
   state: string;
-  linkedin?: string;
-  portfolio?: string;
+  linkedin: string;
+  portfolio: string;
   professionalSummary: string;
   education: EducationItem[];
   experience: ExperienceItem[];
@@ -62,13 +63,18 @@ interface ResumeFormData {
   certifications: string[];
   projects: ProjectItem[];
   languages: string[];
+  languageScores?: Record<string, number>;  // level score per "Name (Level)" entry
   strengths?: string[];
   keyAchievements?: string[];
   interests?: string[];
+  references?: Reference[];                 // name, title, company, phone, email (all optional)
+  theme?: ResumeTheme;                      // template, accent, font, density, scale
+  // plus optional one-line-per-item lists: coCurricular, volunteering, awards,
+  // publications, licences, memberships, personalDetails
 }
 ```
 
-Saved resumes live in the account's database record; the resume currently being edited is held in application state and mirrored to the browser's local storage so a reload doesn't lose work. Because every surface reads the same shape, an edit in the builder flows straight into the cover letter generator, the ATS checker, the templates, and every export.
+Saved resumes live in the account's database record; the resume currently being edited is held in application state, with a recovery copy in the browser's local storage so a reload doesn't lose work. Because every surface reads the same shape, an edit in the builder flows straight into the cover letter generator, the ATS checker, the templates, and every export.
 
 ---
 
